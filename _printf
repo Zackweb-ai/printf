@@ -3,6 +3,6 @@
 int _printf(constant char *format, ...);
 
 int main() {
-	_printf("Hello there, %s! The character you are looking for is: %c and h	ere is percent: %%")
+	_printf("Hello there, %s! The character you are looking for is: %c and h	ere is percent: %%", "User", 'B')
 	return 0;
 }
