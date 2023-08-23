@@ -1,0 +1,3 @@
+#include <stdio.h>
+
+int 0-printf(const char *format, ...);
