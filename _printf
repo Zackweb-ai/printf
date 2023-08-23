@@ -1,0 +1,8 @@
+#include <stdio.h>
+
+int _printf(const char *format, ...);
+
+int main() {
+    _printf("Hello, %s! Your character is: %c and here is a percent sign: %%/n", "User", "Z");
+    return 0;
+}
