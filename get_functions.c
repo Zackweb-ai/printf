@@ -1,6 +1,11 @@
 #include "main.h"
-int get_function(char con_spec, va_list args){
-	int i = 0, cf = 0;
+
+
+int get_function(char con_spec, va_list args)
+{
+	int i = 0;
+	int count_fun = 0;
+
 	specifiers_t spec[] = {
 		{'c', print_char},
 		{'s', print_string},
@@ -11,16 +16,19 @@ int get_function(char con_spec, va_list args){
 		{0, NULL}
 	};
 
-	while (spec[i].specifiers){
-		if (con_spec == spec[i].specifiers) cf += spec[i].f(args);
+	while (spec[i].specifiers)
+	{
+		if (con_spec == spec[i].specifiers)
+			count_fun += spec[i].f(args);
 		i++;
 	}
 
-	if (cf == 0) {
-		cf += _putchar('%');
-		cf += _putchar(con_spec);
+	if (count_fun == 0)
+	{
+		count_fun += _putchar('%');
+		count_fun += _putchar(con_spec);
 	}
 
-	return (cf);
+	return (count_fun);
 }
 
