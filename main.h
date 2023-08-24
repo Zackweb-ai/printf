@@ -1,21 +1,33 @@
-#includ#include <stdarg.h>
-#include <stddef.h>
+#ifndef MAIN_H
+#define MAIN_H
 
-int get_function(char con_spec, va_list args)
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+
+
+/**
+ * struct format - Struct for format
+ * @specifiers: Struct format
+ * @f: The function associated
+ */
+
+typedef struct specifiers
 {
-	int i = 0;
-	int count_fun = 0;
+	char specifiers;
+	int (*f)(va_list);
+} specifiers_t;
 
-	specifiers_t spec[] = {
-		{'c', print_char},
-	{'s', print_string},
-		{'%', print_mod},
-		{'d', print_digit},
-		{'i', print_digit},
-		{'r', print_rev_string},
-		{0, NULL}
-	};
+/*prototypes*/
+int _printf(const char *format, ...);
+int get_function(char s, va_list args);
+int _putchar(char c);
 
-	while (spec[i].specifiers)
-	
-		if (con_spe
+/*Conversion specifiers*/
+int print_char(va_list args);
+int print_string(va_list args);
+int print_digit(va_list args);
+int print_mod(va_list args);
+int print_rev_string(va_list args);
+
+#endif
