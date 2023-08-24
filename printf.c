@@ -1,37 +1,34 @@
 #include "main.h"
-#include <unistd.h>
+
+/**
+ * _printf - implementation of the inbuilt printf
+ * @format: the format specifier
+ * Return: the formated string
+ */
+
 int _printf(const char *format, ...)
 {
-	int i = 0, count = 0, count_fun;
+	int printed = 0;
+
 	va_list args;
 
 	va_start(args, format);
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
-	while (format[i])
+
+	while (*format != '\0')
 	{
-		count_fun = 0;
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			if (!format[i + 1] || (format[i + 1] == ' ' && !format[i + 2]))
-			{
-				count = -1;
-				break;
-			}
-			count_fun += get_function(format[i + 1], args);
-			if (count_fun == 0)
-				count += _putchar(format[i + 1]);
-			if (count_fun == -1)
-				count = -1;
-			i++;
+			format++;
+			printed = selector(format, args, printed);
+			format++;
 		}
 		else
 		{
-			(count == -1) ? (_putchar(format[i])) : (count += _putchar(format[i]));
+			_putchar(*format);
+			printed++;
+			format++;
 		}
 	}
 	va_end(args);
-	return (count);
+	return (printed);
 }
