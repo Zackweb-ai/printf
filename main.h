@@ -1,5 +1,4 @@
-#include "main.h"
-#include <stdarg.h>
+#includ#include <stdarg.h>
 #include <stddef.h>
 
 int get_function(char con_spec, va_list args)
@@ -9,7 +8,7 @@ int get_function(char con_spec, va_list args)
 
 	specifiers_t spec[] = {
 		{'c', print_char},
-		{'s', print_string},
+	{'s', print_string},
 		{'%', print_mod},
 		{'d', print_digit},
 		{'i', print_digit},
@@ -18,18 +17,5 @@ int get_function(char con_spec, va_list args)
 	};
 
 	while (spec[i].specifiers)
-	{
-		if (con_spec == spec[i].specifiers)
-			count_fun += spec[i].f(args);
-		i++;
-	}
-
-	if (count_fun == 0)
-	{
-		count_fun += _putchar('%');
-		count_fun += _putchar(con_spec);
-	}
-
-	return (count_fun);
-}
-
+	
+		if (con_spe
